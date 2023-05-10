@@ -1,7 +1,11 @@
+import { ReactNode } from "react"
 import { Sidebar } from "./Sidebar"
 
+type LayoutProps = {
+  children: ReactNode
+}
 
-export function Layout({children}){
+export function Layout({children}:LayoutProps){
   return (
     <div className="h-screen flex flex-row justify-start">
       <Sidebar/>
