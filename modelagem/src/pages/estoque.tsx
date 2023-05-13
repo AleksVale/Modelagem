@@ -4,6 +4,11 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Estoque() {
   return (
-    <h1>estoque!</h1>
+    <section className={`${inter.className} flex flex-col pt-5 text-black items-center`}>
+      <article>
+       <h1 className="text-5xl">Estoque!</h1>
+       
+      </article>
+    </section>
   )
 }
