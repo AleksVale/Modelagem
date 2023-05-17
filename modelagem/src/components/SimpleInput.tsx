@@ -27,8 +27,8 @@ const SimpleInput: React.FC<ISimpleInputProps> = ({
     <div className="text-stone-400">
       {label && <p>{label}</p>}
       <div className="flex items-center relative">
-        <input
-          className="text-black bg-red-100 rounded border border-red-300 block w-24 md:w-32 lg:w-52 xl:w-60 2xl:w-72 h-8 pr-8 focus:outline-red-400"
+        <input className="px-2 placeholder:text-xs text-black bg-red-100 rounded border border-red-300 block w-24 md:w-32 lg:w-52 xl:w-60 2xl:w-72 h-8 pr-8 focus:outline-red-400" 
+          name = {nameInput}
           type={typeInput}
           placeholder={placeholder || ''}
           onChange={(e) => onChangeValue(e.target.value, nameInput)}
@@ -38,14 +38,14 @@ const SimpleInput: React.FC<ISimpleInputProps> = ({
           <span className="absolute right-0 mr-2">
             {typeInput === 'password' && (
               <AiFillEye
-                className="cursor-pointer"
+                className="cursor-pointer opacity-60"
                 color="#000"
                 onClick={handleClickEye}
               />
             )}
             {typeInput === 'text' && (
               <AiFillEyeInvisible
-                className="cursor-pointer"
+                className="cursor-pointer opacity-60"
                 color="#000"
                 onClick={handleClickEye}
               />
