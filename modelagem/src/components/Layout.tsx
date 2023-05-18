@@ -9,7 +9,7 @@ type LayoutProps = {
   children: ReactNode
 }
 
-export default function Layout({ children }) {
+export default function Layout({ children }: LayoutProps) {
   return (
     <div className="h-screen flex flex-col">
       <Header />

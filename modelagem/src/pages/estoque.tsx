@@ -13,7 +13,6 @@ export default function Estoque() {
       </article>
       <article>
         <h1>teste</h1>
-        <SimpleInput />
       </article>
     </section>
   )

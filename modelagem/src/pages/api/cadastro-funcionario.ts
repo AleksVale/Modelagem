@@ -13,8 +13,7 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>,
 ) {
-  const { nomeCompleto, nomeUsuario, senha, confirmarSenha, cargo, cpfCro } =
-    req.body
+  const { nomeCompleto, nomeUsuario, senha, cargo } = req.body
 
   knexInstance('users')
     .insert({
