@@ -2,10 +2,10 @@ import AlternativeLayout from '@/components/AlternativeLayout'
 import SimpleInput from '@/components/SimpleInput'
 import React, { useState } from 'react'
 
-export default function Login() {
-  /*const [nomeUsuario, setNomeUsuario] = useState<string>('')*/
-  const [senha, setSenha] = useState<string>('')
+export default function Redefinir() {
   const [cpfCro, setCpfCro] = useState<string>('')
+  const [senha, setSenha] = useState<string>('')
+  const [redsenha, setRedSenha] = useState<string>('')
   return (
     <div>
       <h1 className="text-black text-5xl text-center pt-32">Redefinir senha</h1>
@@ -31,12 +31,12 @@ export default function Login() {
         />
         <SimpleInput
           label="Confirme a senha"
-          value={senha}
+          value={redsenha}
           placeholder="Confirme a senha digitada"
           type="password"
           nameInput="password"
           onChangeValue={(e) => {
-            setSenha(e)
+            setRedSenha(e)
           }}
         />
       </div>
@@ -44,6 +44,6 @@ export default function Login() {
   )
 }
 
-Login.getLayout = function (page: React.ReactNode) {
+Redefinir.getLayout = function (page: React.ReactNode) {
   return <AlternativeLayout>{page}</AlternativeLayout>
 }
