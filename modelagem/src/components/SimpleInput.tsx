@@ -5,7 +5,7 @@ interface ISimpleInputProps {
   type?: string
   label?: string
   placeholder?: string
-  value: string
+  value: string | number | undefined
   nameInput: string
   onChangeValue: (value: string, fieldName: string) => void
 }
@@ -33,7 +33,7 @@ const SimpleInput: React.FC<ISimpleInputProps> = ({
           type={typeInput}
           placeholder={placeholder || ''}
           onChange={(e) => onChangeValue(e.target.value, nameInput)}
-          value={value}
+          value={value || ''}
         />
         {type === 'password' && (
           <span className="absolute right-0 mr-2">
