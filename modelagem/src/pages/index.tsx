@@ -1,11 +1,13 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import { Layout } from '@/components/Layout'
-
-const inter = Inter({ subsets: ['latin'] })
+import { signIn } from 'next-auth/react'
 
 export default function Home() {
   return (
-    <div>HELLO WORD</div>
+    <button
+      onClick={() => signIn()}
+      type="button"
+      className="px-4 py-2 mt-6 rounded-lg bg-red-600"
+    >
+      Logar
+    </button>
   )
 }

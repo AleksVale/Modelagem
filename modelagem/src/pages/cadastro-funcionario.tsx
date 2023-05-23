@@ -1,6 +1,7 @@
 import Button from '@/components/Button'
 import SimpleInput from '@/components/SimpleInput'
 import axios from 'axios'
+import { getSession } from 'next-auth/react'
 import { FormEvent, useCallback, useState } from 'react'
 
 export default function CadastroFuncionario() {
@@ -61,7 +62,7 @@ export default function CadastroFuncionario() {
             <SimpleInput
               nameInput="nomeCompleto"
               label="Nome Completo"
-              placeholder='Insira o nome'
+              placeholder="Insira o nome"
               value={formData.nomeCompleto}
               onChangeValue={handleOnChangeInput}
             />
@@ -69,14 +70,14 @@ export default function CadastroFuncionario() {
               label="Nome Usuário"
               value={formData.nomeUsuario}
               nameInput="nomeUsuario"
-              placeholder='Insira o nome de usuário'
+              placeholder="Insira o nome de usuário"
               onChangeValue={handleOnChangeInput}
             />
             <SimpleInput
               nameInput="senha"
               label="Senha"
               type="password"
-              placeholder='Insira a senha'
+              placeholder="Insira a senha"
               value={formData.senha}
               onChangeValue={handleOnChangeInput}
             />
@@ -84,21 +85,21 @@ export default function CadastroFuncionario() {
               nameInput="confirmarSenha"
               label="Confirmar senha"
               type="password"
-              placeholder='Insira a senha'
+              placeholder="Insira a senha"
               value={formData.confirmarSenha}
               onChangeValue={handleOnChangeInput}
             />
             <SimpleInput
               nameInput="cargo"
               label="Selecione o cargo"
-              placeholder='Selecione o cargo'
+              placeholder="Selecione o cargo"
               value={formData.cargo}
               onChangeValue={handleOnChangeInput}
             />
             <SimpleInput
               nameInput="cpfCro"
               label="CPF/CRO"
-              placeholder='Insira o CPF ou CRO'
+              placeholder="Insira o CPF ou CRO"
               value={formData.cpfCro}
               onChangeValue={handleOnChangeInput}
             />
@@ -112,4 +113,24 @@ export default function CadastroFuncionario() {
       </div>
     </div>
   )
+}
+
+export async function getServerSideProps(context) {
+  console.log(context)
+  const session = await getSession(context)
+  console.log(session)
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/Login',
+        permanent: false,
+      },
+    }
+  }
+
+  return {
+    props: {
+      user: session.user,
+    },
+  }
 }
