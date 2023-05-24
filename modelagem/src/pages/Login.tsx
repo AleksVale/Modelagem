@@ -50,7 +50,7 @@ export default function Login() {
           setSenha(e)
         }}
       />
-      <button className="px-4 py-2 mt-6 rounded-lg bg-red-600">Logar</button>
+      <button className="px-4 py-2 mt-6 rounded-lg bg-red-400">Logar</button>
     </form>
   )
 }

@@ -6,7 +6,7 @@ interface HeaderProps {
 }
 export default function Header({ isLogin = false }: HeaderProps) {
   return (
-    <header className="flex w-screen items-center justify-between bg-red-400 py-2 px-7">
+    <header className="flex w-screen items-center justify-between bg-rose-400 py-2 px-7">
       {!isLogin && <TbLayoutSidebarLeftCollapse size={42} color="#fff" />}
       <Image
         src={logo}
