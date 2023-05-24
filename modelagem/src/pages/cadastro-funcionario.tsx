@@ -1,6 +1,7 @@
 import Button from '@/components/Button'
 import SimpleInput from '@/components/SimpleInput'
 import axios from 'axios'
+import { getSession } from 'next-auth/react'
 import { FormEvent, useCallback, useState } from 'react'
 
 export default function CadastroFuncionario() {
@@ -112,4 +113,24 @@ export default function CadastroFuncionario() {
       </div>
     </div>
   )
+}
+
+export async function getServerSideProps(context) {
+  console.log(context)
+  const session = await getSession(context)
+  console.log(session)
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/Login',
+        permanent: false,
+      },
+    }
+  }
+
+  return {
+    props: {
+      user: session.user,
+    },
+  }
 }

@@ -3,11 +3,11 @@ import knexConfig from '../../knexfile'
 
 const db = knex(knexConfig.development)
 interface LoginProps {
-  email: string
+  username: string
   password: string
 }
-async function Login({ email, password }: LoginProps) {
-  const user = await db('users').where('email', email).first()
+async function LoginController({ username, password }: LoginProps) {
+  const user = await db('users').where('user_name', username).first()
 
   if (!user) {
     throw new Error('Invalid credentials')
@@ -22,8 +22,7 @@ async function Login({ email, password }: LoginProps) {
   return {
     id: user.id,
     name: user.name,
-    email: user.email,
+    user_name: user.user_name,
   }
 }
-
-export default Login
+export default LoginController
