@@ -116,9 +116,7 @@ export default function CadastroFuncionario() {
 }
 
 export async function getServerSideProps(context) {
-  console.log(context)
   const session = await getSession(context)
-  console.log(session)
   if (!session) {
     return {
       redirect: {

@@ -1,130 +1,66 @@
-import Button from '@/components/Button'
-import SimpleInput from '@/components/SimpleInput'
-import { Inter } from 'next/font/google'
+import TableRowProduct from '@/components/TableRowProduct'
+import axios from 'axios'
 import Link from 'next/link'
-import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
-import { BsInfoCircle } from 'react-icons/bs'
-import { TbTrashFilled } from 'react-icons/tb'
-
-const inter = Inter({ subsets: ['latin'] })
+import { useEffect, useState } from 'react'
+import Swal from 'sweetalert2'
 
 export default function Estoque() {
+  interface Product {
+    id: number
+    name: string
+    quantidade: number
+    lote: string
+    qtdMinima: number
+  }
+  const [products, setProducts] = useState<Product[]>([])
+
+  useEffect(() => {
+    // Make API call here to retrieve the data
+    // Replace `apiEndpoint` with the actual API endpoint
+    axios
+      .get('http://localhost:3000/api/estoque')
+      .then((response) => {
+        const data = response.data.product as Product[] // Explicitly cast response data as Product[]
+        setProducts(data)
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: 'Error',
+          text: `Erro: ${error}`,
+          icon: 'error',
+          confirmButtonText: 'Confirmar',
+        })
+      })
+  }, [])
+
   return (
     <div>
-      <h1 className="text-black text-5xl text-center pt-32">Estoque</h1>
-      <div className="flex flex-col items-center justify-center py-20">
-        <div className="text-black flex justify-center items-center">
-          <table className=" items-center justify-center border-collapse">
+      <h1 className="text-black text-5xl text-center pt-10">Estoque</h1>
+      <div className=" flex flex-col items-center justify-center m-auto pt-10 w-full max-w-screen-lg">
+        <div className="max-h-[400px] overflow-y-auto">
+          <table className="  table-auto w-full border-collapse text-black bg-gray-400">
             <thead>
-              <tr className="text-2xl text-red-300">
-                <th className="text-left pl-20 pr-64">Nome produto</th>
-                <th className="">Quantidade</th>
-                <th className="">Info.</th>
-                <th className="">Deletar</th>
+              <tr className="text-center text-2xl text-red-300">
+                <th className="p-4">Nome produto</th>
+                <th className="p-4">Quantidade</th>
+                <th className="p-4">Info.</th>
+                <th className="p-4">Deletar</th>
               </tr>
             </thead>
-            <tbody>
-              <tr className="text-center text-2xl">
-                <td className="text-left pl-20">Anestésico</td>
-                <td className="inline-flex">
-                  <button>
-                    <AiOutlineMinus />
-                  </button>
-                  <p className="text-red-800">05</p>
-                  <button>
-                    <AiOutlinePlus />
-                  </button>
-                </td>
-                <td>
-                  <button>
-                    <BsInfoCircle />
-                  </button>
-                </td>
-                <td>
-                  <button>
-                    <TbTrashFilled className="text-red-500" />
-                  </button>
-                </td>
-              </tr>
-
-              <tr className="text-center text-2xl">
-                <td className="text-left pl-20">Bisturi</td>
-                <td className="inline-flex">
-                  <button>
-                    <AiOutlineMinus />
-                  </button>
-                  <p>15</p>
-                  <button>
-                    <AiOutlinePlus />
-                  </button>
-                </td>
-                <td>
-                  <button>
-                    <BsInfoCircle />
-                  </button>
-                </td>
-                <td>
-                  <button>
-                    <TbTrashFilled className="text-red-500" />
-                  </button>
-                </td>
-              </tr>
-
-              <tr className="text-center text-2xl">
-                <td className="text-left pl-20">Cimento Cirúrgico</td>
-                <td className="inline-flex">
-                  <button>
-                    <AiOutlineMinus />
-                  </button>
-                  <p>05</p>
-                  <button>
-                    <AiOutlinePlus />
-                  </button>
-                </td>
-                <td>
-                  <button>
-                    <BsInfoCircle />
-                  </button>
-                </td>
-                <td>
-                  <button>
-                    <TbTrashFilled className="text-red-500" />
-                  </button>
-                </td>
-              </tr>
-
-              <tr className="text-center text-2xl">
-                <td className="text-left pl-20">Dycal</td>
-                <td className="inline-flex">
-                  <button>
-                    <AiOutlineMinus />
-                  </button>
-                  <p>11</p>
-                  <button>
-                    <AiOutlinePlus />
-                  </button>
-                </td>
-                <td>
-                  <button>
-                    <BsInfoCircle />
-                  </button>
-                </td>
-                <td>
-                  <button>
-                    <TbTrashFilled className="text-red-500" />
-                  </button>
-                </td>
-              </tr>
+            <tbody className="text-center">
+              {products.map((product) => (
+                <TableRowProduct key={product.id} product={product} />
+              ))}
             </tbody>
           </table>
         </div>
-      </div>
-      <div className="flex justify-end">
-        <Link href="/cadastro-produto" className="flex flex-col items-center">
-          <button className="bg-red-300 text-black w-52 rounded-lg">
-            Adicionar novo produto
-          </button>
-        </Link>
+        <div className="flex justify-end w-full mt-12">
+          <Link href="/cadastro-produto" className="flex flex-col justify-end">
+            <button className="bg-red-300 text-black w-52 rounded-lg">
+              Adicionar novo produto
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   )

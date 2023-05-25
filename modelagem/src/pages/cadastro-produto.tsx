@@ -51,7 +51,6 @@ export default function CadastroFuncionario() {
 
   const handleOnChangeInput = useCallback(
     (fieldValue: string, fieldName: string) => {
-      console.log(typeof fieldValue)
       if (fieldName === 'qtdMinima') {
         setQtdMinima(parseInt(fieldValue))
       } else {
@@ -81,7 +80,6 @@ export default function CadastroFuncionario() {
           qtdMinima,
           descricao: formData.descricao,
         }
-        console.log(params)
         validateForm(params)
         axios
           .post('http://localhost:3000/api/cadastro-produto', params)
