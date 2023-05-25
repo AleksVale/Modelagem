@@ -38,7 +38,7 @@ export default function Estoque() {
       <h1 className="text-black text-5xl text-center pt-10">Estoque</h1>
       <div className=" flex flex-col items-center justify-center m-auto pt-10 w-full max-w-screen-lg">
         <div className="max-h-[400px] overflow-y-auto">
-          <table className="  table-auto w-full border-collapse text-black bg-gray-400">
+          <table className="  table-auto w-full border-collapse text-black bg-gray-300">
             <thead>
               <tr className="text-center text-2xl text-red-300">
                 <th className="p-4">Nome produto</th>
