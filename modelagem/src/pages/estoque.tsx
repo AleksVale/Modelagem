@@ -35,10 +35,10 @@ export default function Estoque() {
 
   return (
     <div>
-      <h1 className="text-black text-5xl text-center pt-10">Estoque</h1>
-      <div className=" flex flex-col items-center justify-center m-auto pt-10 w-full max-w-screen-lg">
+      <h1 className="text-black text-5xl text-left pt-10">Estoque</h1>
+      <div className=" flex flex-col pt-10 w-full">
         <div className="max-h-[400px] overflow-y-auto">
-          <table className="  table-auto w-full border-collapse text-black bg-gray-300">
+          <table className="table-auto w-full border-collapse text-black bg-gray-300">
             <thead>
               <tr className="text-center text-2xl text-red-300">
                 <th className="p-4">Nome produto</th>

@@ -1,16 +1,10 @@
+import { Product } from '@/Interfaces/API'
 import axios from 'axios'
 import React, { useState, useCallback } from 'react'
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
 import { BsInfoCircle } from 'react-icons/bs'
 import { TbTrashFilled } from 'react-icons/tb'
 import Swal from 'sweetalert2'
-interface Product {
-  id: number
-  name: string
-  quantidade: number
-  lote: string
-  qtdMinima: number
-}
 
 interface TableRowProductProps {
   product: Product // Assuming you have a Product interface or type defined
@@ -73,6 +67,7 @@ const TableRowProduct: React.FC<TableRowProductProps> = ({ product }) => {
           <button className="" onClick={handleMinusButtonClicked}>
             <AiOutlineMinus />
           </button>
+          {qtde < 10 && `0`}
           {qtde + ' '}
           <button className="" type="button" onClick={handlePlusButtonClicked}>
             <AiOutlinePlus />

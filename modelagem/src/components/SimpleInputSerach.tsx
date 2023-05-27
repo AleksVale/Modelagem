@@ -25,14 +25,16 @@ const SimpleInputSearch: React.FC<ISimpleInputSearchProps> = ({
       {label && <p>{label}</p>}
       <div className="flex items-center relative">
         <input
-          className="px-2 placeholder:text-xs text-black bg-red-100 rounded border border-neutral-800 block w-24 md:w-32 lg:w-52 xl:w-60 2xl:w-72 h-8 pr-8 focus:outline-red-400"
+          className="px-2 placeholder:text-xs text-black bg-red-100 rounded border border-neutral-800 block w-24 md:w-32 lg:w-52 xl:w-60 2xl:w-72 h-8 pr-8 focus:outline-none focus:border-red-300"
           name={nameInput}
           type={typeInput}
           placeholder={placeholder || ''}
           onChange={(e) => onChangeValue(e.target.value)}
           value={value || ''}
         />
-        <AiOutlineSearch color="black" />
+        <span className="absolute right-2 top-2">
+          <AiOutlineSearch color="black" />
+        </span>
       </div>
     </div>
   )
