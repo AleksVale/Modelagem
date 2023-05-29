@@ -13,7 +13,7 @@ const SelectInput = () => {
         Ordenar
       </label>
       <select
-        className="px-2 placeholder:text-xs text-black bg-red-100 rounded border border-neutral-800 block w-24 md:w-32 lg:w-52 xl:w-60 2xl:w-72 h-8 pr-8 focus:outline-red-400"
+        className="px-2 placeholder:text-xs text-black bg-red-100 rounded border border-neutral-800 block w-24 md:w-32 lg:w-52 xl:w-60 2xl:w-80 h-8 pr-8 focus:outline-red-400"
         id="SelectInput"
         value={selectedOption}
         // onChange={handleOptionChange}

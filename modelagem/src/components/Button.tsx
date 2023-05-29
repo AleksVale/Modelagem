@@ -19,7 +19,7 @@ const Button: React.FC<ButtonProps> = ({
         </button>
       )}
       <button
-        className="font-bold w-32 h-10 rounded-xl bg-red-300 hover:bg-green-400 ease-in-out duration-300"
+        className="font-bold w-32 h-10 rounded-xl bg-red-300 hover:bg-rose-400  ease-in-out duration-300"
         onClick={handleConfirmButtonClicked}
       >
         {labelConfirm}
