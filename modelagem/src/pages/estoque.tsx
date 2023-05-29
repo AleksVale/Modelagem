@@ -56,7 +56,7 @@ export default function Estoque() {
         </div>
         <div className="flex justify-end w-full mt-12">
           <Link href="/cadastro-produto" className="flex flex-col justify-end">
-            <button className="bg-red-300 text-black w-52 rounded-lg">
+            <button className="bg-red-300 text-black w-52 rounded-lg p-2">
               Adicionar novo produto
             </button>
           </Link>
