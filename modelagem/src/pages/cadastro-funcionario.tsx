@@ -53,7 +53,7 @@ export default function CadastroFuncionario() {
   )
   return (
     <div>
-      <h1 className="text-black text-5xl text-center pt-32">
+      <h1 className="text-black text-5xl text-left pt-10">
         Cadastro Funcionário
       </h1>
       <div className="flex flex-col items-center justify-center py-20">

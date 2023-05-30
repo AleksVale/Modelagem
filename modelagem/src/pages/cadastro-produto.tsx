@@ -115,9 +115,7 @@ export default function CadastroFuncionario() {
 
   return (
     <div>
-      <h1 className="text-black text-5xl text-center pt-32">
-        Cadastro Produto
-      </h1>
+      <h1 className="text-black text-5xl text-left pt-10">Cadastro Produto</h1>
       <div className="flex flex-col items-center justify-center py-20">
         <form className="text-black  w-10/12 flex flex-col justify-center items-center">
           <div className="grid grid-cols-2 gap-10 justify-items-center w-5/12 pb-16">
