@@ -10,7 +10,12 @@ export default function Pedidos() {
         <div className="table-auto w-full border-collapse text-black pb-6">
           <SimpleInput
             nameInput="nomePedido"
-            label="Insira o nome do pedido"
+            label={
+              <span>
+                Insira o nome do pedido
+                <span className="text-red-500">*</span>
+              </span>
+            }
             placeholder="Dê nome ao pedido a ser criado"
             value={undefined}
           />
