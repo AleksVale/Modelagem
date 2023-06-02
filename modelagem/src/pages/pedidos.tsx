@@ -1,5 +1,6 @@
 import Button from '@/components/Button'
 import SimpleInput from '@/components/SimpleInput'
+import { getSession } from 'next-auth/react'
 import { AiOutlinePlus } from 'react-icons/ai'
 
 export default function Pedidos() {
@@ -32,4 +33,22 @@ export default function Pedidos() {
       </div>
     </div>
   )
+}
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context)
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/Login',
+        permanent: false,
+      },
+    }
+  }
+
+  return {
+    props: {
+      user: session.user,
+    },
+  }
 }
