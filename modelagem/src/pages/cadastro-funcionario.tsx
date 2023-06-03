@@ -1,6 +1,7 @@
 import Button from '@/components/Button'
 import SimpleInput from '@/components/SimpleInput'
 import axios from 'axios'
+import { GetServerSidePropsContext } from 'next'
 import { getSession } from 'next-auth/react'
 import { FormEvent, useCallback, useState } from 'react'
 
@@ -40,7 +41,7 @@ export default function CadastroFuncionario() {
       e.preventDefault()
 
       axios
-        .post('http://localhost:3000/api/cadastro-funcionario', formData)
+        .post('http://localhost:3000/api/funcionarios', formData)
         .then((response) => {
           resetFormData()
         })
@@ -53,12 +54,12 @@ export default function CadastroFuncionario() {
   )
   return (
     <div>
-      <h1 className="text-black text-5xl text-center pt-32">
+      <h1 className="text-black text-5xl text-left pt-10">
         Cadastro Funcionário
       </h1>
-      <div className="flex flex-col items-center justify-center py-20">
-        <form className="text-black  w-10/12 flex flex-col justify-center items-center">
-          <div className="grid grid-cols-2 gap-10 justify-items-center w-5/12">
+      <div className="flex flex-col py-20">
+        <form className="text-black  w-fullz flex flex-col">
+          <div className="grid grid-cols-3 gap-10 w-full">
             <SimpleInput
               nameInput="nomeCompleto"
               label="Nome Completo"
@@ -104,18 +105,20 @@ export default function CadastroFuncionario() {
               onChangeValue={handleOnChangeInput}
             />
           </div>
-          <Button
-            handleConfirmButtonClicked={(e) => {
-              handleSubmit(e)
-            }}
-          />
+          <div className="flex justify-end mr-36">
+            <Button
+              handleConfirmButtonClicked={(e) => {
+                handleSubmit(e)
+              }}
+            />
+          </div>
         </form>
       </div>
     </div>
   )
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await getSession(context)
   if (!session) {
     return {

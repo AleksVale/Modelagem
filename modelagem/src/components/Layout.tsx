@@ -18,7 +18,7 @@ function Layout({ children }: LayoutProps) {
       <main className="flex flex-row justify-start grow">
         <Sidebar />
         <div
-          className={`${inter.className} bg-primary flex-1 p-4 text-white border-1 border-dashed`}
+          className={`${inter.className} bg-red-100 flex-1 p-4 text-white border-1 border-dashed px-40`}
         >
           {children}
         </div>

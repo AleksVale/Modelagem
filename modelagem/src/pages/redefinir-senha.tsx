@@ -8,7 +8,7 @@ export default function Redefinir() {
   const [redsenha, setRedSenha] = useState<string>('')
   return (
     <div>
-      <h1 className="text-black text-5xl text-center pt-32">Redefinir senha</h1>
+      <h1 className="text-black text-5xl text-left pt-10">Redefinir senha</h1>
       <div className="flex flex-col items-center justify-center py-20">
         <SimpleInput
           label="CPF/CRO"

@@ -115,33 +115,35 @@ export default function CadastroFuncionario() {
 
   return (
     <div>
-      <h1 className="text-black text-5xl text-center pt-32">
-        Cadastro Produto
-      </h1>
+      <h1 className="text-black text-5xl text-left pt-10">Cadastro Produto</h1>
       <div className="flex flex-col items-center justify-center py-20">
-        <form className="text-black  w-10/12 flex flex-col justify-center items-center">
-          <div className="grid grid-cols-2 gap-10 justify-items-center w-5/12 pb-16">
-            <SimpleInput
-              nameInput="nomeProduto"
-              label="Nome do produto"
-              placeholder="Insira o nome do produto"
-              value={formData.nomeProduto}
-              onChangeValue={handleOnChangeInput}
-            />
-            <SimpleInput
-              label="Quantidade Mínima"
-              value={qtdMinima}
-              nameInput="qtdMinima"
-              placeholder="Insira a quantidade"
-              onChangeValue={handleOnChangeInput}
-            />
+        <form className="text-black w-10/12 flex flex-col justify-center items-center">
+          <div className="flex justify-center w-10/12 pb-16">
+            <div className="flex-row mx-8">
+              <SimpleInput
+                nameInput="nomeProduto"
+                label="Nome do produto"
+                placeholder="Insira o nome do produto"
+                value={formData.nomeProduto}
+                onChangeValue={handleOnChangeInput}
+              />
+            </div>
+            <div className="flex-row mx-8">
+              <SimpleInput
+                label="Quantidade Mínima"
+                value={qtdMinima}
+                nameInput="qtdMinima"
+                placeholder="Insira a quantidade"
+                onChangeValue={handleOnChangeInput}
+              />
+            </div>
           </div>
-          <div className=" flex flex-col w-5/12">
+          <div className="flex flex-col w-7/12">
             <label htmlFor="descricao" className="self-start text-stone-400">
               Descrição
             </label>
             <textarea
-              className="border  block rounded h-40 bg-red-100 border-red-300 resize-none placeholder:text-xs p-2"
+              className="border block rounded h-40 bg-red-100 border-red-300 resize-none placeholder:text-xs p-2 w-full"
               value={formData.descricao}
               placeholder="Escreve a descrição do produto"
               name="descricao"

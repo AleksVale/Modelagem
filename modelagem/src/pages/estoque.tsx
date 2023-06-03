@@ -35,12 +35,12 @@ export default function Estoque() {
 
   return (
     <div>
-      <h1 className="text-black text-5xl text-center pt-10">Estoque</h1>
-      <div className=" flex flex-col items-center justify-center m-auto pt-10 w-full max-w-screen-lg">
-        <div className="max-h-[400px] overflow-y-auto">
-          <table className="  table-auto w-full border-collapse text-black bg-gray-400">
+      <h1 className="text-black text-5xl text-left pt-10">Estoque</h1>
+      <div className=" flex flex-col pt-10 w-full">
+        <div className="max-h-[580px] overflow-y-auto border-neutral-500 border">
+          <table className="text-xs table-auto w-full h-full border-collapse text-black bg-gray-300 ">
             <thead>
-              <tr className="text-center text-2xl text-red-300">
+              <tr className="text-center text-lg text-gray-400">
                 <th className="p-4">Nome produto</th>
                 <th className="p-4">Quantidade</th>
                 <th className="p-4">Info.</th>
@@ -56,7 +56,7 @@ export default function Estoque() {
         </div>
         <div className="flex justify-end w-full mt-12">
           <Link href="/cadastro-produto" className="flex flex-col justify-end">
-            <button className="bg-red-300 text-black w-52 rounded-lg">
+            <button className="bg-red-300 text-black w-52 rounded-lg p-2">
               Adicionar novo produto
             </button>
           </Link>

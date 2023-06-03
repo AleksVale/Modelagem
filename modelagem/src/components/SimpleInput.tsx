@@ -26,9 +26,9 @@ const SimpleInput: React.FC<ISimpleInputProps> = ({
   return (
     <div className="text-stone-400">
       {label && <p>{label}</p>}
-      <div className="flex items-center relative">
+      <div className="flex items-center relative w-80">
         <input
-          className="px-2 placeholder:text-xs text-black bg-red-100 rounded border border-red-300 block w-24 md:w-32 lg:w-52 xl:w-60 2xl:w-72 h-8 pr-8 focus:outline-red-400"
+          className="px-2 placeholder:text-xs text-black bg-red-100 rounded border border-red-300 block w-24 md:w-32 lg:w-52 xl:w-60 2xl:w-80 h-8 pr-8 focus:outline-red-400"
           name={nameInput}
           type={typeInput}
           placeholder={placeholder || ''}
