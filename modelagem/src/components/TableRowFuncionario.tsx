@@ -1,19 +1,24 @@
-import { Funcionario } from '@/Interfaces/API'
+import { Funcionario } from '@/pages/funcionarios'
 import React from 'react'
+import { AiFillEye } from 'react-icons/ai'
+import { BsPencil } from 'react-icons/bs'
 
-interface TableRowFuncionarioProps {
-  funcionario: Funcionario // Assuming you have a Product interface or type defined
-}
-
-const TableRowFuncionario: React.FC<TableRowFuncionarioProps> = ({
-  funcionario,
+const TableRowFuncionario: React.FC<Funcionario> = ({
+  id,
+  name,
+  user_name,
+  cargo,
 }) => {
   return (
-    <tr key={funcionario.id} className="text-center text-base">
-      <td className="p-4 text-center">{funcionario.nome}</td>
-      <td className="p-4 text-center">{funcionario.cargo}</td>
-      <td className="p-4 text-center">{funcionario.status}</td>
-      <td className="p-4 text-center">{funcionario.acao}</td>
+    <tr key={id} className="text-center text-base">
+      <td className="p-4 text-center">{name}</td>
+      <td className="p-4 text-center">{user_name}</td>
+      <td className="p-4 text-center">
+        <AiFillEye />
+      </td>
+      <td className="p-4 text-center">
+        <BsPencil />
+      </td>
     </tr>
   )
 }

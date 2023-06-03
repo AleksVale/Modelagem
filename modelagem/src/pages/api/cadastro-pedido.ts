@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-const knex = require('knex')
-const knexConfig = require('../../../knexfile')
+import knex from 'knex'
+import knexConfig from '../../../knexfile'
 
 const knexInstance = knex(knexConfig.development)
 
@@ -11,18 +11,21 @@ interface Produto {
 }
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { idPedido, nomePedido, dataCompra, fornecedor, produtos } = req.body
+  const { nomePedido, fornecedor, produtos } = req.body
+
+  const data = new Date()
 
   knexInstance
     .transaction((trx: any) => {
       return trx('pedidos')
         .insert({
-          id: idPedido,
           nome: nomePedido,
-          data_compra: dataCompra,
+          data_compra: data,
           fornecedor,
         })
-        .then(() => {
+        .then((ids: number[]) => {
+          const idPedido = ids[0] // Assuming the ID column is auto-incremented
+
           const pedidosProdutos = produtos.map((produto: Produto) => ({
             produto_id: produto.idProduto,
             pedido_id: idPedido,

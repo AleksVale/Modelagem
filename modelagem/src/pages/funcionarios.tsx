@@ -1,11 +1,38 @@
 import SelectInput from '@/components/SelectInput'
 import SimpleInputSearch from '@/components/SimpleInputSerach'
 import TableRowFuncionario from '@/components/TableRowFuncionario'
+import axios from 'axios'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import { AiFillEye } from 'react-icons/ai'
 import { BsPencil } from 'react-icons/bs'
 
-export default function funcionarios() {
+export interface Funcionario {
+  id: number
+  name: string
+  user_name: string
+  cargo: string
+}
+
+export default function Funcionarios() {
+  const [funcionarios, setFuncionarios] = useState<Funcionario[]>()
+  const [search, setSearch] = useState<string>('')
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          'http://localhost:3000/api/funcionarios',
+        )
+        console.log(response)
+        setFuncionarios(response.data.user)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    fetchData()
+  }, [])
   return (
     <div>
       <h1 className="text-black text-5xl pt-10">Funcionários</h1>
@@ -17,7 +44,7 @@ export default function funcionarios() {
                 label="Busca Rápida"
                 nameInput="busca-pedido"
                 placeholder="Busca Rápida"
-                value=""
+                value={search}
                 onChangeValue={() => {
                   console.log('entrou')
                 }}
@@ -36,28 +63,26 @@ export default function funcionarios() {
             </Link>
           </div>
           <div className="max-h-[550px] overflow-y-auto w-full">
-            <table className="text-xs table-auto w-full h-full border-collapse text-black bg-gray-300 border-neutral-500 border">
+            <table className="text-xs table-auto w-full h-full border-collapse text-black bg-gray-300 ">
               <thead>
                 <tr className="text-center text-lg text-gray-400">
-                  <th className="p-4">Nome funcionário</th>
                   <th className="p-4">Cargo</th>
+                  <th className="p-4">Nome de usuário</th>
                   <th className="p-4">Status</th>
                   <th className="p-4">Ação</th>
                 </tr>
               </thead>
               <tbody className="text-center">
-                {/* { {funcionarios.map((funcionario: Funcionario) => (
-                  <TableRowFuncionario
-                    key={funcionario.id}
-                    funcionario={funcionario}
-                  />
-                ))} } */}
-                <button>
-                  <AiFillEye />
-                </button>
-                <button>
-                  <BsPencil />
-                </button>
+                {funcionarios &&
+                  funcionarios.map((item) => (
+                    <TableRowFuncionario
+                      key={item.id}
+                      id={item.id}
+                      name={item.name}
+                      user_name={item.user_name}
+                      cargo={item.cargo}
+                    />
+                  ))}
               </tbody>
             </table>
           </div>

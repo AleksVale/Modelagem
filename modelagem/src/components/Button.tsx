@@ -12,7 +12,7 @@ const Button: React.FC<ButtonProps> = ({
   handleConfirmButtonClicked,
 }) => {
   return (
-    <div className="py-14 flex gap-5 grow justify-end items-end w-2/4 mr-32">
+    <div className="py-14 flex gap-5 grow justify-end items-end w-full">
       {hasCancel && (
         <button className="font-bold w-32 h-10 rounded-xl bg-red-400 hover:bg-red-600 ease-in-out duration-300">
           Cancelar
